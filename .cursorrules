@@ -1,0 +1,42 @@
+# Takip Asistanı Geliştirme Kuralları
+
+## Kullanılan Teknolojiler
+- Vue 3 (Composition API)
+- Vite
+- Pinia
+- Vue Router
+- Supabase (PostgreSQL, Auth, Realtime API)
+- OpenAI API veya Gemini API
+- Workbox (PWA ve offline cache)
+- Tailwind CSS veya SCSS (modern, mobil öncelikli ve kullanıcı dostu arayüz için)
+- **sql.js (tarayıcıda SQLite desteği için)**
+
+## Teknik Kurallar
+- Tüm veriler **öncelikle localde SQLite ile saklanacaktır** (tarayıcıda sql.js ile).
+- Offline cache ve local veri desteği zorunludur.
+- Kullanıcı online olduğunda local SQLite ile Supabase arasında **otomatik veri senkronizasyonu** yapılacaktır.
+- State yönetimi için Pinia kullanılacaktır.
+- Görev, not ve liste objeleri şu alanlara sahip olmalıdır:  
+  `id`, `title`, `created_at`, `status`, `assigned_to_user_id`, `created_by_user_id`, `summary`, `tags`, `category`
+- **Tüm görev, not ve listelerde kategori seçimi ve gösterimi zorunludur.**
+- Row Level Security (RLS) aktif olmalı, kullanıcılar sadece kendi verilerini görebilmelidir.
+- AI servisi frontend veya Supabase Edge Function üzerinden çağrılabilir.
+- Responsive ve mobil öncelikli tasarım zorunludur.
+- **Tüm ekranlar modern, kullanıcı dostu ve mobil uygulama benzeri olacak şekilde Tailwind CSS ile responsive/mobil-first olarak tasarlanacaktır.**
+- PWA desteği (ana ekrana eklenebilir, offline çalışabilir) sağlanmalıdır.
+
+## Yazılım Kuralları
+- Magic number kullanılmayacaktır.
+- Bileşenler tekil ve parçalanmış olmalıdır.
+- Vue Single File Component (SFC) yapısı kullanılacaktır.
+- Dosya adlandırmaları `kebab-case` formatında olmalıdır.
+- Kodlarda açıklama ve component dokümantasyonu bulunmalıdır.
+- Kod okunabilirliği ve sürdürülebilirliği ön planda tutulacaktır.
+- **Kategori desteği tüm görev, not ve listelerde zorunludur.**
+
+## Geliştirme Kuralları
+- Her yeni özellik için ayrı bir branch açılmalıdır.
+- Kodlar PR (Pull Request) ile ana dala alınmalıdır.
+- PR'larda kod incelemesi yapılmalıdır.
+- Testler ve manuel kontroller yapılmadan deploy edilmemelidir.
+- Geliştirme ortamında dummy veriler kullanılabilir, canlıya çıkışta temizlenmelidir. 
