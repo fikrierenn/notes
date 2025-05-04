@@ -17,11 +17,17 @@
 - Kullanıcı online olduğunda local SQLite ile Supabase arasında **otomatik veri senkronizasyonu** yapılacaktır.
 - State yönetimi için Pinia kullanılacaktır.
 - Görev, not ve liste objeleri şu alanlara sahip olmalıdır:  
-  `id`, `title`, `created_at`, `status`, `assigned_to_user_id`, `created_by_user_id`, `summary`, `tags`, `category`
+  `id`, `title`, `created_at`, `status`, `assigned_to_user_id`, `created_by_user_id`, `summary`, `tags`, `category`, `due_date`, `completed_at`, `postponed_count`, `postponed_dates`
+- **Kullanıcı yönetimi:**
+  - Dummy (sabit) kullanıcı listesi ile hızlı prototipleme mümkündür.
+  - Gerçek uygulamada Supabase Auth ile kullanıcılar kalıcı olarak saklanır ve her girişte verileri korunur.
+- **Görevlerde başlangıç tarihi, son tarih, tamamlanma tarihi, toplam gün, kaç kere ertelendi ve erteleme geçmişi otomatik olarak takip edilmelidir.**
+- **Her son tarih değişikliğinde eski ve yeni tarih ile değişiklik zamanı postponed_dates dizisine kaydedilmeli, postponed_count artırılmalıdır. Bu bilgiler görev detayında ve raporlarda gösterilmelidir.**
 - **Tüm görev, not ve listelerde kategori seçimi ve gösterimi zorunludur.**
 - Row Level Security (RLS) aktif olmalı, kullanıcılar sadece kendi verilerini görebilmelidir.
 - AI servisi frontend veya Supabase Edge Function üzerinden çağrılabilir.
 - Responsive ve mobil öncelikli tasarım zorunludur.
+- **Uygulama hem mobilde hem de masaüstünde (PC) tam fonksiyonlu ve kullanıcı dostu olarak çalışmalıdır. Menü ve formlar ekran boyutuna göre otomatik olarak uyum sağlamalıdır. Responsive ve adaptif tasarım hem mobil hem masaüstü için zorunludur.**
 - **Tüm ekranlar modern, kullanıcı dostu ve mobil uygulama benzeri olacak şekilde Tailwind CSS ile responsive/mobil-first olarak tasarlanacaktır.**
 - PWA desteği (ana ekrana eklenebilir, offline çalışabilir) sağlanmalıdır.
 
@@ -33,6 +39,7 @@
 - Kodlarda açıklama ve component dokümantasyonu bulunmalıdır.
 - Kod okunabilirliği ve sürdürülebilirliği ön planda tutulacaktır.
 - **Kategori desteği tüm görev, not ve listelerde zorunludur.**
+- Tüm iletişim ve kodlama dili Türkçe olmalıdır. Açıklamalar, değişken adları ve dokümantasyon Türkçe yazılacaktır.
 
 ## Geliştirme Kuralları
 - Her yeni özellik için ayrı bir branch açılmalıdır.
